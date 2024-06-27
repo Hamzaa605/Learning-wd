@@ -6,9 +6,57 @@
     <title>Form</title>
   </head>
   <body>
-    <form action="">
-      <label for="username">Enter name</label>
-      <input type="text" id="username">
+    <form action="" method="get">
+      <label for="username">Enter name:</label>
+      <input type="text" id="username" name="username" placeholder="name" />
+      <br />
+
+      <label for="age">Enter age:</label>
+      <input
+        type="number"
+        id="age"
+        min="1"
+        max="100"
+        name="age"
+        placeholder="age"
+      />
+      <br />
+      <label for="email">Enter email:</label>
+      <input type="email" id="email" name="email" placeholder="mail id" />
+      <br />
+      <label for="date">Enter birth date:</label>
+      <input type="date" id="date" name="date" placeholder="birthday" />
+      <br />
+      <label for="protection">Enter password:</label>
+      <input type="password" id="protection" placeholder="password" />
+      <br />
+      <label for="gerder">male</label>
+      <input type="radio" id="gender" name="gender" value="M" />
+      <label for="gender">female</label>
+      <input type="radio" id="gender" name="gender" value="F" />
+      <br />
+      <label for="description">Tell about yourself:</label>
+      <textarea name="description" id="description" cols="10" rows="10">
+Write here</textarea
+      >
+      <br />
+      <label for="courses">select courses</label>
+      <select name="courses" id="courses">
+        <option value="WD">Web designing</option>
+        <option value="HTML">hypertext markup language</option>
+        <option value="JAVA">core java</option>
+      </select>
+      <br />
+      <label for="color">Select color</label>
+      <input type="color" id="color" />
+      <br />
+      <label for="Week">Select weel</label>
+      <input type="week" id="week" />
+      <br />
+      <label for="month">Select month</label>
+      <input type="month" id="month" />
+
+      <input type="submit" />
     </form>
   </body>
 </html>
