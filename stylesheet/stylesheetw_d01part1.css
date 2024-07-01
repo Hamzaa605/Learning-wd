@@ -1,0 +1,13 @@
+/*descendent selector*/
+/* .box   p{
+
+background-color:red;
+}*/
+
+
+
+
+/*child selector*/
+.box>p{
+    background-color: brown;
+}

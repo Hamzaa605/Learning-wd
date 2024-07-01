@@ -1,0 +1,9 @@
+a:hover{
+    color: brown;
+}
+a:active{
+    color: cadetblue;
+}
+h1:hover{
+    background-color: chartreuse;
+}

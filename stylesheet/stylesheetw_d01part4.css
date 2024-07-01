@@ -1,0 +1,21 @@
+p::first-line{
+    background-color: chartreuse;
+}
+
+p::first-letter{
+
+    font-size: 50px;
+}
+
+li:nth-child(even)
+{
+    color: cyan;
+}
+li:nth-child(odd)
+{
+    color: burlywood;
+}
+
+li:first-child{
+    color: deeppink;
+}
