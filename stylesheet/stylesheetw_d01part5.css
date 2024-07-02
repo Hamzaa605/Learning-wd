@@ -43,3 +43,10 @@ h1
     text-decoration: 4px line-through double blueviolet;
 
 }
+
+#para5{
+    font-weight: bold;
+}
+#para6{
+    font-style: italic;
+}

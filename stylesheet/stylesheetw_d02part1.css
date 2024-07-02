@@ -1,0 +1,41 @@
+/*Padding(top=t,right=r,bottom=b,left=l)
+1.padding:20px;
+          trbl
+2.padding:20px 10px;
+          tb     rl
+3.padding:20px 10px 30px;
+          t     rl   b
+4.padding:20px 10px 30px 15px;
+           t    r    b    l
+*/
+
+h1{
+    /*            x   y  blur   color*/         
+    text-shadow: 0px 0px 10px chartreuse;
+    border: 4px dashed black;
+    padding: 25px;
+}
+
+.box{
+    border: 2px solid chartreuse;
+    padding: 50px;
+}
+
+.box p{
+    border: 3px dotted greenyellow;
+    padding: 30px;
+}
+
+h3{
+    border: 5px dotted orange;
+    height: 50px;
+    padding: 25px;
+    box-sizing: content-box;
+}
+
+h4{
+    border: 5px dotted orange;
+    height: 50px;
+    padding: 25px;
+    box-sizing: border-box;
+}

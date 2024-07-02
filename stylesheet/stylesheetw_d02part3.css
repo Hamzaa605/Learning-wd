@@ -1,0 +1,46 @@
+.box{
+    height: 50px;
+    width: 50px;
+    background-color: brown;
+    margin: auto;
+}
+
+.para{
+    background-color: chartreuse;
+}
+.para span{
+    background-color: chocolate;
+    height: 50px;
+}
+.para1{
+    background-color: aqua;
+}
+.para1 span{
+    background-color: chocolate;
+    display: inline-block;
+    height: 50px;
+}
+.para2{
+    background-color: blue;
+}
+.para2 span{
+    background-color: chocolate;
+    display: block;
+    height: 50px;
+}
+
+h1{
+    background-color: blueviolet;
+    display: inline;
+}
+
+a{
+   text-decoration: none; 
+   background-color: crimson;
+   height: 30px;
+   display: inline-block;
+   padding: 5px 20px;
+   color: aliceblue;
+   box-sizing: border-box;
+   margin: 50px;
+}

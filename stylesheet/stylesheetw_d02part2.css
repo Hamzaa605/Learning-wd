@@ -1,0 +1,15 @@
+.box{
+    width: 250px;
+    height: 250px;
+    background-color: lightcoral;
+    margin: 10px 240px 20px;
+    padding: 5px;
+}
+
+.box h1{
+    border: 5px dashed black;
+    margin-bottom: 50px;
+}
+.box p{
+    border: 2px solid black;
+}
