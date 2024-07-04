@@ -1,0 +1,19 @@
+div{
+    border: 2px solid black;
+}
+#box1{
+    width: 800px;
+    float: left;
+}
+#box2{
+    width: 300px;
+    float: right;
+}
+
+body{
+    background-image: url("../audio/image/1.jpg");
+    background-size: 50%;
+    background-position: right;
+    background-repeat: no-repeat;
+
+}
