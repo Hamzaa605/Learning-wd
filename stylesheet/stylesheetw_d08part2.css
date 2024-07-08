@@ -1,0 +1,39 @@
+@media screen and (max-width:1000px)
+{
+    body
+    {
+    background-color: darkmagenta;
+}
+h1{
+    font-size: 80px;
+}
+img{
+    visibility: visible;
+}
+}
+
+@media screen and (max-width: 500px)
+{
+    body
+    {
+    background-color: rgb(15, 63, 195);
+}
+h1{
+    font-size: 60px;
+}
+}
+@media screen and (max-width: 250px)
+{
+    body
+    {
+    background-color: rgb(11, 183, 195);
+}
+h1{
+    font-size: 40px;
+}
+img{
+    visibility: hidden;
+}
+}
+
+    
