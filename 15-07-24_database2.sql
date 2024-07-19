@@ -120,3 +120,49 @@ values
 (444,"wer"),
 (555,"ryw");
 select * from bike;
+
+
+alter table bike alter bike_no set default 0;
+
+alter table bike alter bike_no drop default;
+
+desc bike;
+
+-- alter table <table_name> add constraint <constraint_name> check <condition>;
+alter table bike add constraint check_no check (bike_no>=0); 
+
+insert into bike values(777,"mno",22);
+insert into bike values(-888,"pqr",33);
+
+-- alter table <table_name> drop constraint <constraint_name>;
+alter table bike drop constraint check_no;
+
+-- foreign-key.
+-- 1...
+create table category(
+category_id int primary key,
+category_name varchar(90) not null
+);
+
+desc category;
+
+insert into category values 
+(1,"ELECTRONICS"),
+(2,"MOBILE");
+
+SELECT * FROM category;
+
+create table product(
+product_id int primary key,
+product_name varchar(90) not null,
+product_price int default 0 check(product_price>=0),
+category_id int,
+constraint category_product foreign key(category_id) 
+references category(category_id)
+);
+
+desc product;
+
+insert into product values (11,"T.V",55000,1);
+insert into product values (12,"T.Vs",55003,4);
+select * from product;
