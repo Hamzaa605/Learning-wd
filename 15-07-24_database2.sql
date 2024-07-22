@@ -138,7 +138,7 @@ insert into bike values(-888,"pqr",33);
 alter table bike drop constraint check_no;
 
 -- foreign-key.
--- 1...
+-- 1.
 create table category(
 category_id int primary key,
 category_name varchar(90) not null
@@ -149,6 +149,7 @@ desc category;
 insert into category values 
 (1,"ELECTRONICS"),
 (2,"MOBILE");
+insert into category values(4,"T.V");
 
 SELECT * FROM category;
 
@@ -166,3 +167,74 @@ desc product;
 insert into product values (11,"T.V",55000,1);
 insert into product values (12,"T.Vs",55003,4);
 select * from product;
+
+-- alter table<table-name> drop foreign key <name-ofoconstraint>;
+alter table product drop foreign key category_product;
+
+
+
+-- 2..
+-- school
+create table schooll(
+schooll_id int primary key,
+schooll_name varchar(100)
+);
+
+desc schooll;
+
+insert into schooll values(11,"M.E.A");
+
+select * from schooll;
+
+-- student
+create table students(
+roll_no int primary key,
+students_name varchar(100) not null,
+phone_No bigint,
+schooll_id int,
+constraint schooll_students foreign key (schooll_id)
+references schooll(schooll_id)
+);
+
+desc students;
+
+insert into students values(1,"xyz",9876543211,11);
+
+select * from students;
+
+
+
+-- 3...
+-- courses
+create table courses(
+courses_id int primary key,
+courses_name varchar(90) not null
+);
+
+desc courses;
+
+
+
+
+select * from courses;
+
+-- teacher
+create table teacher(
+teacher_id int primary key,
+teacher_name varchar(80) not null,
+phone_noo bigint,
+courses_id int,
+constraint courses_teacher foreign key (courses_id)
+references courses(courses_id)
+);
+
+desc teacher;
+
+
+
+
+select * from teacher;
+
+-- 4....
+
+
