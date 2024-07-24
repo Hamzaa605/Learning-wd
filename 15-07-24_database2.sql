@@ -58,6 +58,8 @@ alter table books change book_number book_num int;
 alter table books rename to book_shop;
 desc book_shop;
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- DML (Data Manipulation Language); 1.INSERT 2.DELETE 3.UPDATE .
 
 create database ham_shaikh;
@@ -137,6 +139,7 @@ insert into bike values(-888,"pqr",33);
 -- alter table <table_name> drop constraint <constraint_name>;
 alter table bike drop constraint check_no;
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- foreign-key.
 -- 1.
 create table category(
@@ -237,18 +240,18 @@ desc teacher;
 
 select * from teacher;
 
--- ---------
+-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- TURE=1 / FALSE=0
 
 select(3>1);
 select(3!=3);
-
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- AND (ALL STATEMENT SHOULD BE TURE)
 select (20>10 and 40=40);
 select (20<10 and 40!=40);
 
 select (10<20 and 40>40);
-
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- OR 
 select (20>10 or 40=40);
 select (20<10 or 40!=40);
@@ -257,7 +260,7 @@ select (10<20 or 40>40);
 
 select(90=90 or 40!=40 or 50>50);
 
-
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- NOT
 select not(90=90 or 40!=40 or 50>50);
 
@@ -265,7 +268,7 @@ select not(20>10 and 40=40);
 
 select not(3!=3);
 
-
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 4-----------
 drop table department;
@@ -285,7 +288,7 @@ insert into department values ("D1","MARKETING"),("D2","IT"),("D3","HUMAN_RESOUR
 create table employee(
 e_id int4 primary key,
 e_name varchar(80) not null,
-city varchar (80) not null,
+city varchar (80),
 salary bigint,
 department varchar(60),
 constraint department_employee foreign key (department)
@@ -311,16 +314,81 @@ select * from employee;
 
 select * from department;
 
-
-
-
 alter table employee drop foreign key department_employee;
 
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- (AS) TO GIVE TEMP NAME TO COLUMN.
+
+select (100>90) as Answer;
+
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- WHERE CLAUSE
+
+ select * from employee where e_id="1111";
+select department from employee where e_id="1111";
+select city,e_name from employee where e_id="1111";
+
+select * from employee where salary>20000;
+select * from employee where salary<=20000;
+
+select * from employee where city="mumbai" and salary<50000;
+
+select * from employee where city="mumbai" or  city="banglore";
+
+select * from employee where salary>=10000 and salary<=34500;
+
+select * from employee where department="D1" and salary<=20000;
+
+select * from employee where department="D1" and city="pune";
+
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- (IN) OPRAETER
+
+select * from employee where city in("mumbai","pune");
+
+select * from employee where e_id in("1111","1113","1114");
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- BETWEEN OPRAETER 
+
+select * from employee where salary between 30000 and 40000;
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- UPDATE --
+-- update <table-name> set column1=value1,column2=value2,.....
+-- where condition;
+alter table employee add column age int;
+
+update employee set age=0;
+update employee set age=25 where e_id=1111;
+update employee set age=26 where e_id=1112;
+update employee set age=27 where e_id=1113;
+update employee set age=28 where e_id=1114;
+update employee set age=29 where e_id=1115;
+
+update employee set city="pune" where e_id=1111; 
+update employee set city="mumbai" where e_id=1112;
+
+update employee set salary=(39452+5000) where e_id=1115;
+ update employee set salary=salary+3000 where e_id=1111;
+
+update employee set age=age+2;
+
+update employee set salary=salary-2000 where department="D1";
+
+UPDATE employee set city=null where e_id in("1111","1113"); 
+
+select * from employee where city is null;
+select * from employee where city is not null;
 
 
+select * from employee;
+desc employee;
 
-
-
+select * from employee where e_name!="nikita";
 
 
 
