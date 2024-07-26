@@ -390,37 +390,110 @@ desc employee;
 
 select * from employee where e_name!="nikita";
 
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from employee order by salary;
 
+select * from employee order by salary desc;
 
+select * from employee order by salary,age desc limit 1;
 
+select * from employee order by salary limit 1;
 
+select * from employee order by age;
 
+select * from employee order by age desc ;
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+show tables;
 
+select department, count(e_id) from employee
+group by department;
 
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+select city, count(e_id) 
+from employee
+group by city;
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+select sum(salary) from employee;
 
+select city,sum(salary),
+avg(salary),min(salary),max(salary),count(e_id)
+from employee 
+group by city;
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+select department, 
+sum(salary) AS SALARY,
+avg(salary) AS AVGS,
+min(salary) AS MIN,
+max(salary) AS MAX,
+count(e_id) AS E_ID 
+from employee 
+group by department;
 
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+alter table employee add column gender char;
 
+desc employee;
 
+select * from employee;
 
+update employee set gender="f";
 
+update employee set gender="m" where e_id=1114;
 
+select gender, count(e_id)
+from employee group by gender;
 
+select gender, count(e_id)
+from employee 
+group by gender 
+having gender="f";
 
+select gender, count(e_id)
+from employee where salary>50000 
+group by gender 
+having gender="f";
 
+select count(*)
+from employee where salary>50000 
+and gender="f";
 
+select department, avg(salary) as average_sal
+from employee
+group by department
+having avg(salary)<50000;
 
+select department, avg(salary) as average_sal
+from employee
+group by department
+order by average_sal limit 1;
 
+select department, avg(salary) as average_sal
+from employee
+group by department
+order by average_sal desc limit 1;
+ 
+select department, count(e_id)
+from employee 
+group by department
+order by count(e_id) limit 1;
 
+select department, count(e_id)
+from employee 
+group by department
+order by count(e_id) desc limit 1;
 
-
+select department, sum(salary) as min_sal
+from employee
+group by department
+order by min_sal limit 1;
 
 
 
