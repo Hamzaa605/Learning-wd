@@ -495,28 +495,63 @@ from employee
 group by department
 order by min_sal limit 1;
 
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- built in function
+
+-- concat("hello","world")  output=helloworld
+
+select concat("Mohammed"," ","Hamzaa"," ","Shaikh");
+
+select concat("Mohammed"," ","Hamzaa"," ","Shaikh") as "name";
+
+select * from employee;
+
+select e_id,e_name,concat(e_id,"-",e_name) as "employee's" from employee;
+
+select e_id,e_name,concat(e_id,"-","ename@itvedant.com") as Email
+from employee;
+
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+desc employee;
+
+-- UPPER ("sql") output=SQL
+
+SELECT upper("sql");
+select lower("OUR");
+
+insert into employee
+values (1116,"faiz",lower("mUmBai"),38000,"D1",26,upper("f"));
+
+select length("w e l c o m e");
+
+select length("w e l c o m e")>15 as lengths;
+
+select e_name, length(e_name) from employee;
+
+-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- substring
+-- h e l l o
+-- 1 2 3 4 5
+select substr("hello",1);
+
+select substr("hello",2,1);
+
+select substr("hamza",length("hamza"),1);
+
+select e_name, substr(e_name,length(e_name),1) from employee;
+
+select e_name, upper(substr(e_name,length(e_name),1)) from employee;
+
+select e_name,concat(e_name,"-",upper(substr(e_name,length(e_name),1))) from employee;
+
+select concat(upper(substr(e_name,1,1)),lower(substr(e_name,2,length(e_name)-1))),upper(substr(e_name,length(e_name),1))
+from employee;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select concat(upper(substr(e_name,1,1)),lower(substr(e_name,2,length(e_name)-2)),upper(substr(e_name,length(e_name),1))) 
+from employee;
 
 
 
