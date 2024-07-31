@@ -551,28 +551,84 @@ from employee;
 
 
 select concat(upper(substr(e_name,1,1)),lower(substr(e_name,2,length(e_name)-2)),upper(substr(e_name,length(e_name),1))) 
+as CASES
+from employee;
+
+
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+desc employee;
+
+
+alter table employee add column joining_date date;
+
+select e_name,salary,
+case 
+   when salary<30000 then "very less"
+   when salary<60000 then "average"
+   when salary<100000 then "very high"
+else "-"
+end as salarydata
 from employee;
 
 
 
+select e_name,salary,
+case 
+   when salary<30000 then "very less"
+   when salary<60000 then "average"
+   when salary<100000 then "very high"
+else "-"
+end as salarydata,
+case
+    when department="D1" then "marketing"
+    when department="D2" then "fianance"
+    when department="D3" then "i.t"
+    else "-"
+    end as department_name
+from employee;
 
 
+select e_id,e_name,department,
+case
+    when department="D1" then "marketing"
+    when department="D2" then "fianance"
+    when department="D3" then "i.t"
+    else "-"
+    end as department_name
+from employee;
 
 
+select * from employee;
+
+update employee set salary=
+case 
+    when department="D1" then salary+2000
+    when department="D2" then salary+1000
+	when department="D3" then salary+2500
+else salary
+end;
 
 
+alter table employee add column Email varchar(90);
 
+select * from employee;
 
+update employee 
+set email=concat(substr(city,1,1),".",upper(e_name),"_",e_id,"@itvedant.com");
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--  COALESCE --
+-- ---------
+   
+   select * from employee;
+   
+alter table employee add column phone_no bigint;
 
+update employee set phone_no=9876543211,email=null where e_id in (1111,1112,1113);                                                      
 
-
-
-
-
-
-
+select e_name,email,phone_no,coalesce(email,phone_no) from employee;
 
 
 
