@@ -629,32 +629,104 @@ alter table employee add column phone_no bigint;
 update employee set phone_no=9876543211,email=null where e_id in (1111,1112,1113);                                                      
 
 select e_name,email,phone_no,coalesce(email,phone_no) from employee;
+USE hamzaa_shaikh;
+
+SELECT date_add(curdate(),INTERVAL 100 DAY);
+SELECT e_name,joining_date, date_add(joining_date,INTERVAL 1 YEAR) AS anniversary FROM employee;
 
 
+ALTER TABLE employee ADD COLUMN joinng_date DATE;
+update employee set joinng_date="2023-06-23" where e_id=1111; 
+update employee SET joinng_date="2021-02-7" where e_id=1112;
+update employee set joinng_date="2020-6-30" where e_id=1113;
+update employee SET joinng_date="2022-11-10" where e_id=1114;
+update employee set joinng_date="2023-06-9" where e_id=1115;
+update employee SET joinng_date="2023-04-8" where e_id=1116;
 
 
+SELECT * FROM employee
+FROM employee
+JOIN departmennt
+ON employee.d_id=department.d_id;
+
+UPDATE employee SET department=NULL WHERE e_id=1111;
+INSERT INTO department VALUE ("D4","operation");
+
+ select * from department;
+ select * from employee;
+
+-- join ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ -- inner join --
+ 
+ SELECT e.e_id,d.department_id,d.department_name FROM employee e
+ INNER JOIN department d
+ON
+e.department=d.department_id;
 
 
+alter table employee drop column joining_date;
+
+-- left join --
+
+select * from employee e
+
+left join department d
+on
+e.department=d.department_id
+where e.salary<40000;
 
 
+select * from employee e
+left join department d
+on
+e.department=d.department_id
+order by e.salary desc limit 1;
+
+-- right join --
+
+select * from employee e
+right join department d
+on
+e.department=d.department_id
+where e.e_id is null; 
+                                                             
+
+insert into department values ("D5","Salesman"); 
+
+-- cross join --
+
+select * from employee e,department;
+
+select * from employee e,department d 
+where e.department=d.department_id and department_id="D1";
 
 
+-- union --
+
+create table department_duplicate(
+department_id char(2),
+department_name varchar(50),
+city varchar(60)
+);
+
+select * from department;
+
+insert into department_duplicate values
+("D1","marketing","mumbai"),
+("D6","training","pune");
 
 
+select * from department_duplicate;
+
+select department_id,department_name from department
+union 
+select department_id,department_name from department_duplicate;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+select department_id,department_name from department
+union all
+select department_id,department_name from department_duplicate;
 
 
 
