@@ -694,10 +694,13 @@ where e.e_id is null;
 
 insert into department values ("D5","Salesman"); 
 
--- cross join --
+-- cross join -- 
 
 select * from employee e,department;
 
+select * from employee e,department d 
+where e.department=d.department_id;
+-- (EQUI JOIN)
 select * from employee e,department d 
 where e.department=d.department_id and department_id="D1";
 
@@ -729,18 +732,67 @@ union all
 select department_id,department_name from department_duplicate;
 
 
+-- full outer  join ---------------------------------------------------------------------------
+use hamza_shaikh;
+
+select * from employee e 
+left join department d
+on e.department=d.department_id
+
+union
+
+select * from employee e 
+right join department d
+on e.department=d.department_id;
 
 
+-- NON-EQUI JOIN  ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select * from employee e,department d
+where e.department=d.department_id and e.salary<50000;
 
 
+-- SUB-QUERIES -------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select min(salary) from employee;
+select * from employee where salary=21000;
+select * from employee where salary=(select min(salary) from employee);
 
 
+select max(salary) from employee;
+select * from employee where salary=78000;
+select * from employee 
+where salary=(select max(salary) from employee);
 
 
+select avg(salary) from employee;
+select * from employee where salary<(select avg(salary) from employee);
 
 
+select * from employee 
+where salary<(select max(salary) from employee) 
+order by Salary desc limit 1;
 
 
+select department_id from department where department_name="marketing";
+select * from employee 
+where department=(select department_id from department where department_name="marketing");
+
+
+select * from department;
+
+alter table department add column d_city varchar(70);
+
+update department set d_city="mumbai" where department_id="D1";
+update department set d_city="mumbai" where department_id="D2";
+update department set d_city="bangalore" where department_id="D3";
+update department set d_city="pune" where department_id="D4";
+update department set d_city="mumbai" where department_id="D5";
+
+
+select department_id from department where d_city="mumbai";
+select * from employee where department 
+in (select department_id from department where d_city="mumbai");
 
 
 
