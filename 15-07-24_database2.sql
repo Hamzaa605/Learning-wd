@@ -645,7 +645,6 @@ update employee SET joinng_date="2023-04-8" where e_id=1116;
 
 
 SELECT * FROM employee
-FROM employee
 JOIN departmennt
 ON employee.d_id=department.d_id;
 
@@ -773,6 +772,14 @@ select * from employee
 where salary<(select max(salary) from employee) 
 order by Salary desc limit 1;
 
+-- 3RD HIGHEST SALARY
+ 
+select * from employee where 
+salary<(select salary from employee 
+where salary<(select max(salary) from employee) 
+order by Salary desc limit 1) 
+order by salary desc limit 1;
+
 
 select department_id from department where department_name="marketing";
 select * from employee 
@@ -795,39 +802,67 @@ select * from employee where department
 in (select department_id from department where d_city="mumbai");
 
 
+select * from employee;
+
+-- > ALL
+
+select salary from employee where e_name="faiz" or e_name="nilesh"; 
+select * from employee where salary>all
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- >= ALL
+
+select salary from employee where e_name="faiz" or e_name="nilesh"; 
+select * from employee where salary>=all
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- < ALL
+
+select salary from employee where e_name="fiaz" or e_name="nilesh"; 
+select * from employee where salary<all
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- <= ALL
+
+select salary from employee where e_name="fiaz" or e_name="nilesh"; 
+select * from employee where salary<=all
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- < ANY
+
+select salary from employee where e_name="fiaz" or e_name="nilesh";
+select * from employee where salary<any
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- <= ANY
+
+select salary from employee where e_name="fiaz" or e_name="nilesh";
+select * from employee where salary<=any
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- > ANY
+
+select salary from employee where e_name="fiaz" or e_name="nilesh";
+select * from employee where salary>any
+(select salary from employee where e_name="faiz" or e_name="nilesh");
+
+-- >= ANY
+
+select salary from employee where e_name="fiaz" or e_name="nilesh";
+select * from employee where salary>=any
+(select salary from employee where e_name="faiz" or e_name="nilesh");
 
 
+select max(age) from employee;
+select * from employee 
+where age<(select max(age) from employee) 
+order by age desc limit 1;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from department where department_id=
+(select Department from employee where age=
+(select age from employee where 
+age<(select max(age) from employee) 
+order by age desc limit 1));
 
 
 
