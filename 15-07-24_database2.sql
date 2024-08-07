@@ -864,21 +864,34 @@ select * from department where department_id=
 age<(select max(age) from employee) 
 order by age desc limit 1));
 
+-- VIEWS -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create view department_salary as
+select department,sum(salary) from employee group by department;
+
+select * from  department_salary;
 
 
+select * from employee;
 
+create view emp as
+select e_id,e_name,city,department,age,gender,Email,phone_no,joinng_date from employee;
 
+select * from emp;
 
+create view sal_40000 as
+select * from employee e
+left join department d
+on
+e.department=d.department_id
+where e.salary<40000;
 
+select* from sal_40000;
 
+-- drop view view_name
+drop view sal_40000;
 
-
-
-
-
-
-
-
+-- SIMPLE VIEW COMPLEX VIEW -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
