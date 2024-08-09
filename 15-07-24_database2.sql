@@ -893,82 +893,121 @@ drop view sal_40000;
 
 -- SIMPLE VIEW COMPLEX VIEW -------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- delimiter (to change end symbol)
 
+delimiter $$
 
+select * from employee $$
 
 
+/*
+delimiter $$
+create procedure procedure_name()  
+begin
+-- ---
+-- ---
+-- ---
+-- ---
+end$$
+delimiter ;
+*/
 
 
+delimiter $$
+create procedure getemployee()
+begin
 
+     select * from employee;
 
 
 
+end$$
+delimiter ;
 
+call getemployee;
 
 
 
+delimiter $$
+create procedure get_department()
+begin
 
 
+    select * from department where d_city="mumbai";
 
+end$$
+delimiter ;
 
+call get_department();
 
+drop procedure get_department;
 
 
 
 
 
+delimiter $$
+create procedure get_departments()
+begin
 
 
+    select * from department;
 
+end$$
+delimiter ;
 
+call get_departments();
 
 
+delimiter $$
+create procedure get_by_city(in city varchar(100))
+begin
 
+select count(e_id) from employee
+where employee.city=city; 
 
+end$$
+delimiter ;
 
 
+call get_by_city("mumbai");
 
 
 
 
 
 
+delimiter $$
+create procedure get_by_department(in dep_count varchar(100))
+begin
 
+select * from employee
+where department=dep_count; 
 
+end$$
+delimiter ;
 
 
+call get_by_department("D1");
 
+DROP procedure get_by_department;
 
 
+SELECT * FROM EMPLOYEE;
 
+delimiter $$
+create procedure update_phoneno(in ID INT(12),update_no BIGINT)
+begin
 
+     update employee set phone_no=update_no where e_id=ID; 
+ 
 
+end$$
+delimiter ;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CALL update_phoneno(1115,9876655110);
+SELECT * FROM EMPLOYEE;
 
 
 
