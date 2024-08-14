@@ -1010,70 +1010,107 @@ CALL update_phoneno(1115,9876655110);
 SELECT * FROM EMPLOYEE;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- IN AND OUT / INOUT / DECLARE
+desc employee;
+
+delimiter $$
+create procedure updatesalary(in e_id int,inout salary bigint)
+begin
+     declare old_salary bigint;
+     select employee.salary into old_salary from employee where employee.e_id=e_id;
+     update employee set employee.salary=salary where employee.e_id=e_id;
+     set salary=old_salary;
+end $$
+delimiter ;
+select * from employee;
+set @salary=70000;
+call updatesalary(1111,@salary);
+select @salary;
+
+
+/*
+delimiter $$ 
+create function fun_name(p1,p2,.......pn)
+returns (datatype)
+begin
+   logic ------
+
+   returns value;
+end$$
+delimiter;
+*/
+
+
+
+
+delimiter $$ 
+create function addition(a int, b int)
+returns int
+begin
+  return a+b;
+end $$
+delimiter ;
+
+select addition(40,10) as ab;
+
+-- -------------------------
+
+delimiter $$
+create function sub(c int,d int)
+returns int
+begin
+  return c-d;
+end $$
+delimiter ;
+
+select sub(4,5);
+
+
+
+delimiter $$
+create function formatname(word varchar(100))
+returns varchar(100)
+begin
+
+    return concat(upper(substr(word,1,1)),lower(substr(word,2)));
+end$$
+delimiter ;
+
+
+select formatname("hAMzA");
+
+-- ----------------------------------------
+
+delimiter $$
+create function format_name(word varchar(100))
+returns varchar(100)
+begin
+    return concat(LOWER(substr(word,1,1)),UPPER(substr(word,2)));
+end$$
+delimiter ;
+
+select format_name("hAMzA");
+
+select formatname(e_name),formatname(city),addition(salary,5000) from employee;
+
+-- -----------------------------------------
+
+delimiter $$
+create function grade (marks int)
+returns char(20) 
+begin
+    declare grade char (20);
+    set grade=case
+              when marks between 75 and 100 then "A"
+               when marks between 41 and 74 then "B"
+               when marks between 0 and 40 then "C"
+               else"invalid marks"
+               end;
+       return grade;        
+end $$
+delimiter ;
+
+select grade (78);
 
 
 
