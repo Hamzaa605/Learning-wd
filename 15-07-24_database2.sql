@@ -1112,47 +1112,116 @@ delimiter ;
 
 select grade (78);
 
+-- syntax -------------
+
+/*
+if condition then
+     statements
+ end if;
+ 
+ 
+if condition then
+     statement 1
+else
+     statement 2    
+ end if;
+*/
 
 
 
+delimiter $$
+create function checknumber(n int)
+returns varchar(4)
+  begin
+     if (n%2=0)then    
+          return "even";
+     else
+           return "odd";
+         end if;
+end $$
+delimiter ;
+
+select checknumber(6784) as "even/odd";
 
 
+delimiter $$
+create function agecheck(age int)
+returns varchar(6)
+  begin
+     if (age>18)then    
+          return "true";
+     else
+           return "false";
+         end if;
+end $$
+delimiter ;
+
+select agecheck(5) as eligible_to_vote;
 
 
+/*
+if condition then
+     statement 1
+ELSE IF condition THEN
+    statement2
+ELSE IF condition THEN
+    statement3
+Else
+    statement
+ .
+ .
+ .
+ .
+ end if;   
+*/
 
 
+DELIMITER $$
+create function selectlanguage(choise int)
+returns varchar(20)
+ begin
+     if (choise=1) then 
+     return "english";
+     elseif (choise=2) then 
+     return "marathi";
+     elseif (choise=3) then 
+     return "hindi";
+     else
+     RETURN  "invalid info";
+      end if;
+end$$
+DELIMITER ;
+drop function  selectlanguage;
+
+select  selectlanguage(3);
 
 
+DELIMITER $$
+create function selectdays(days int)
+returns varchar(20)
+ begin
+     if (days=1) then 
+     return "monday";
+     elseif (days=2) then 
+     return "tuesday";
+     elseif (days=3) then 
+     return "wednesday";
+     elseif (days=4) then 
+     return "thursday";
+     elseif (days=5) then 
+     return "fridy";
+     elseif (days=6) then 
+     return "saturday";
+     elseif (days=7) then 
+     return "sunday";
+     else
+     RETURN  "invalid info";
+      end if;
+end$$
+DELIMITER ;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select selectdays(9);
 
 
 
