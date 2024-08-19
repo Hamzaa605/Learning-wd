@@ -1224,33 +1224,109 @@ DELIMITER ;
 select selectdays(9);
 
 
+-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- LOOP -----------
+ 
+   
+   
+/*
+lablename: loop
+  if condition then
+      leave lablename;
+ end if;
+ end loop lablename;
+*/
+
+delimiter $$
+create procedure loopexample()
+begin
+   
+   declare i int;
+   set i=1;
+   
+   simpleloop : loop
+    if i=6 then
+     leave simpleloop;
+	end if;
+    
+    select i ;
+     set i=i+1;
+    end loop simpleloop;
+ 
+end $$
+delimiter ;
+
+drop procedure loopexample;
+
+call loopexample();
 
 
 
 
+delimiter $$
+create procedure loophello()
+begin
+   
+   declare i int;
+   set i=1;
+   
+   simpleloop : loop
+    if i=6 then
+     leave simpleloop;
+	end if;
+    
+    select "hello";
+     set i=i+1;
+    end loop simpleloop;
+ 
+end $$
+delimiter ;
+
+
+call loophello();
 
 
 
+-- --
 
 
+create table emps( 
+emp_id varchar (7));
 
 
+delimiter $$
+create procedure loopEMP()
+begin
+   
+   declare i int;
+   set i=1;
+   
+   threeloop : loop
+    if i=6 then
+     leave threeloop;
+	end if;
+    
+    insert into emps values (concat("emp",i));
+    
+     set i=i+1;
+    end loop threeloop;
+ 
+end $$
+delimiter ;
+
+drop procedure loopEMP;
+
+call loopEMP();
+
+select * from emps;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+lablename: WHILE
+   condition do
+// statement
+end while lablename;   
+*/
 
 
 
