@@ -1412,7 +1412,7 @@ delimiter ;
 
 
 create table demo(d_id int not null);
-
+alter table demo add primary key (d_id);
 insert into demo values (null);
 
 desc demo;
@@ -1439,10 +1439,21 @@ select * from demo;
 
 
 
+delimiter $$
+create procedure exceptionhandling_2(in d_id int)
+    begin
+    declare continue handler for 1062
+    begin
+     select "unique value";
+     end;
+    insert into demo values (d_id);
+    select "code after inseration";
+    end $$
+delimiter ;
 
+drop procedure exceptionhandling_2;
 
-
-
+call exceptionhandling_2(100);
 
 
 
