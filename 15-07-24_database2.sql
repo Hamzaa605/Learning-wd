@@ -1320,6 +1320,7 @@ call loopEMP();
 
 select * from emps;
 
+-- WHILE_LOOP ------------------------------------------------------------------------
 
 /*
 lablename: WHILE
@@ -1328,44 +1329,113 @@ lablename: WHILE
 end while lablename;   
 */
 
+delimiter $$
+create procedure whileloop_1()
+begin
+     declare i int;
+	 set i=1;
+   whileloop: while
+       i<=10 do
+    select i;
+    set i=i+1 ;
+   end while whileloop;
+    
+       
+end$$
+delimiter ;
+
+call whileloop_1;
+
+
+
+
+delimiter $$
+create procedure whileloop_2()
+begin
+     declare i int;
+	 set i=11;
+   whileloopS: while
+       i<=20 do
+    select i;
+    set i=i+1 ;
+   end while whileloopS;
+    
+       
+end$$
+delimiter ;
+
+
+call whileloop_2;
 
 
 
 
 
+delimiter $$
+create procedure whileloop_3()
+begin
+
+  declare i int;
+  set i=0;
+ 
+   whilelooppp : while
+   i<=50 do 
+   select i;
+   set i=i+2 ;
+   end while whilelooppp;
+  
+end$$
+delimiter ;
+
+drop procedure whileloop_3;
+
+call whileloop_3();
+
+/*
+delimiter $$
+create procedure whileloop_3()
+begin
+
+  declare i int;
+  set i=1 ;
+ 
+   whilelooppp : while
+   i<=50 do 
+    if i%2=0 then
+   select i;
+   set i=i+ 1 ;
+   end while whilelooppp;
+  
+end$$
+delimiter ;
+*/
 
 
+create table demo(d_id int not null);
+
+insert into demo values (null);
+
+desc demo;
 
 
+delimiter $$
+create procedure exceptionhandling(in d_id int)
+    begin
+        declare continue handler for 1048
+    begin
+       select "you can not insert null value";
+    end;
+    
+    insert into demo values (d_id);
+    select "code after inseration";
+    end $$
+delimiter ;
 
+drop procedure exceptionhandling;
 
+call exceptionhandling(null);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from demo;
 
 
 
